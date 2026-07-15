@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MycoLab — Klasifikasi Jamur</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="scene">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">⁂</span>
+      <span class="brand-name">Myco<b>Lab</b></span>
+    </div>
+    <div class="topbar-meta">Spesimen Klasifikasi &middot; Logistic Regression</div>
+  </header>
+
+  <main class="stage">
+
+    <!-- ================= KARTU SPESIMEN (input) ================= -->
+    <section class="card specimen-card">
+      <span class="card-eyebrow">Kartu Spesimen</span>
+      <h1>Amati &amp; klasifikasikan jamurmu</h1>
+      <p class="card-desc">
+        Pilih empat ciri fisik jamur yang kamu temukan. Keempatnya dipilih
+        lewat association matrix sebagai fitur dengan korelasi terkuat
+        terhadap keamanan konsumsi.
+      </p>
+
+      <form id="specimen-form" novalidate>
+        {% for field in fields %}
+        <div class="field">
+          <label for="{{ field.key }}">{{ field.label }}</label>
+          <span class="field-hint">{{ field.hint }}</span>
+          <select id="{{ field.key }}" name="{{ field.key }}" required>
+            <option value="" disabled selected>Pilih {{ field.label|lower }}&hellip;</option>
+            {% for opt in field.options %}
+            <option value="{{ opt.value }}">{{ opt.label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="analyze-btn" id="analyze-btn">
+          <span>Analisis Spesimen</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <path d="M5 12h14M13 6l6 6-6 6"/>
+          </svg>
+        </button>
+        <div class="form-error" id="form-error"></div>
+      </form>
+    </section>
+
+    <!-- ================= HASIL ANALISIS (spore rosette) ================= -->
+    <section class="card result-card">
+      <span class="card-eyebrow">Hasil Analisis</span>
+
+      <div class="rosette-wrap">
+        <svg id="rosette" viewBox="0 0 300 300" aria-hidden="true"></svg>
+        <div class="rosette-center">
+          <span class="verdict-word" id="verdict-word">Menunggu&nbsp;data</span>
+          <span class="confidence-value" id="confidence-value"></span>
+        </div>
+      </div>
+
+      <div class="result-detail" id="result-detail" aria-live="polite">
+        <p class="placeholder-text">
+          Lengkapi kartu spesimen di sebelah kiri, lalu tekan
+          &ldquo;Analisis Spesimen&rdquo; — cetakan spora di atas akan
+          bermekaran menunjukkan hasilnya.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>Model: OneVsRestClassifier(LogisticRegression) &middot; 4 fitur kategorik &middot; onehot encoding</span>
+    <div class="footer-metrics">
+      <span>Akurasi uji <b>{{ (metrics.test_accuracy * 100) | round(2) }}%</b></span>
+      <span>ROC AUC <b>{{ metrics.roc_auc }}</b></span>
+      <span>n&nbsp;data <b>{{ metrics.n_samples }}</b></span>
+    </div>
+  </footer>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

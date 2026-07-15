@@ -1,0 +1,69 @@
+{
+  "features": [
+    "odor",
+    "gill_color",
+    "ring_type",
+    "spore_print_color"
+  ],
+  "options": {
+    "odor": [
+      "almond",
+      "anise",
+      "creosote",
+      "fishy",
+      "foul",
+      "musty",
+      "none",
+      "pungent",
+      "spicy"
+    ],
+    "gill_color": [
+      "black",
+      "brown",
+      "buff",
+      "chocolate",
+      "gray",
+      "green",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "white",
+      "yellow"
+    ],
+    "ring_type": [
+      "evanescent",
+      "flaring",
+      "large",
+      "none",
+      "pendant"
+    ],
+    "spore_print_color": [
+      "black",
+      "brown",
+      "buff",
+      "chocolate",
+      "green",
+      "orange",
+      "purple",
+      "white",
+      "yellow"
+    ]
+  },
+  "metrics": {
+    "train_accuracy": 0.9949,
+    "cv_best_score": 0.9945,
+    "test_accuracy": 0.9932,
+    "roc_auc": 0.9998,
+    "precision_edible": 0.9871,
+    "recall_edible": 1.0,
+    "n_samples": 8124,
+    "n_train": 6499,
+    "n_test": 1625
+  },
+  "best_params": {
+    "algo__estimator__C": "10",
+    "algo__estimator__fit_intercept": "True"
+  },
+  "sklearn_version": "1.6.1"
+}
