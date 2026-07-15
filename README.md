@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⁂ MycoLab
+#  MycoLab
 
 ### Klasifikasi Jamur *Edible* vs *Poisonous* dengan Machine Learning
 
@@ -27,7 +27,7 @@ memakai model klasifikasi yang dilatih di atas dataset UCI Mushroom (8.124 spesi
 
 <br>
 
-## 📖 Tentang Proyek
+##  Tentang Proyek
 
 **MycoLab** adalah antarmuka web untuk model klasifikasi jamur yang dibangun
 sebagai bagian dari latihan *machine learning* klasik (`Part_7_-_Latihan.ipynb`).
@@ -41,30 +41,30 @@ untuk melihat pola & warna sporanya. Elemen ini jadi visualisasi utama hasil
 prediksi — sebuah "rosette" titik-titik yang mekar hijau (aman) atau merah
 (beracun) sesuai hasil analisis.
 
-## ✨ Fitur
+##  Fitur
 
-- 🔮 **Prediksi real-time** — kirim 4 ciri jamur, dapat hasil klasifikasi + skor keyakinan tanpa reload halaman (fetch API)
-- 🎨 **Visualisasi spore-print rosette** — SVG dinamis yang beranimasi sesuai hasil prediksi
-- 📊 **Confidence bar** untuk kedua kelas (*edible* & *poisonous*), bukan cuma label biner
-- 🧬 **Auto-train saat pertama kali dijalankan** — model dilatih otomatis di environment lokal, jadi tidak ada masalah kompatibilitas pickle lintas versi scikit-learn
-- 🌙 **Desain gelap khas "lab mikologi"** — palet forest-floor + tinta cetakan spora, tipografi Instrument Serif × IBM Plex Mono
-- 📱 **Responsif** — layout dua kolom di desktop, satu kolom di mobile
+-  **Prediksi real-time** — kirim 4 ciri jamur, dapat hasil klasifikasi + skor keyakinan tanpa reload halaman (fetch API)
+-  **Visualisasi spore-print rosette** — SVG dinamis yang beranimasi sesuai hasil prediksi
+-  **Confidence bar** untuk kedua kelas (*edible* & *poisonous*), bukan cuma label biner
+-  **Auto-train saat pertama kali dijalankan** — model dilatih otomatis di environment lokal, jadi tidak ada masalah kompatibilitas pickle lintas versi scikit-learn
+-  **Desain gelap khas "lab mikologi"** — palet forest-floor + tinta cetakan spora, tipografi Instrument Serif × IBM Plex Mono
+-  **Responsif** — layout dua kolom di desktop, satu kolom di mobile
 
-## 🖼 Preview
+##  Preview
 
 <div align="center">
   <!-- Ganti dengan screenshot/GIF asli kamu, contoh: -->
   <!-- <img src="docs/demo.gif" width="820" alt="MycoLab demo"> -->
 </div>
 
-> 💡 Rekam GIF singkat alur: pilih 4 ciri → klik **"Analisis Spesimen"** → rosette
+>  Rekam GIF singkat alur: pilih 4 ciri → klik **"Analisis Spesimen"** → rosette
 > mekar hijau/merah. Simpan sebagai `docs/demo.gif`, lalu tambahkan baris ini
 > tepat di atas blockquote ini:
 > ```md
 > ![Demo](docs/demo.gif)
 > ```
 
-## 🧠 Cara Kerja Model
+##  Cara Kerja Model
 
 ### Fitur yang digunakan
 
@@ -82,7 +82,7 @@ target dipilih lewat *association matrix*:
 
 ```mermaid
 flowchart LR
-    A["👤 4 ciri jamur\n(form input)"] --> B["Flask · POST /predict"]
+    A[" 4 ciri jamur\n(form input)"] --> B["Flask · POST /predict"]
     B --> C["OneHotEncoder\n(ColumnTransformer)"]
     C --> D["OneVsRestClassifier\n(LogisticRegression)"]
     D --> E{"Prediksi"}
@@ -118,7 +118,7 @@ Dievaluasi dengan `train_test_split` 80/20 (`random_state=42`) + `GridSearchCV`
 | Frontend | HTML5, CSS3 (custom, tanpa framework), vanilla JS |
 | Visualisasi hasil | SVG dinamis (spore-print rosette) |
 
-## 🚀 Instalasi
+##  Instalasi
 
 ```bash
 git clone https://github.com/rizki-putra-saimona-armen/mycolab.git
@@ -134,7 +134,7 @@ Buka `http://127.0.0.1:5000` di browser.
 > disimpan ke `model/`. Run berikutnya instan. Model **sengaja tidak** ikut
 > di-commit ke repo supaya tidak ada isu kompatibilitas pickle lintas environment.
 
-## ☁️ Deploy ke Vercel
+##  Deploy ke Vercel
 
 Proyek ini sudah kompatibel untuk deploy langsung ke Vercel (deteksi Flask
 otomatis lewat `requirements.txt` + entrypoint `app.py`):
@@ -158,12 +158,12 @@ Beberapa hal yang sudah disesuaikan khusus untuk Vercel:
 - `vercel.json` menaikkan `maxDuration` jadi 30 detik untuk memberi buffer di
   cold start pertama.
 
-> 💡 Kalau mau cold start lebih instan, kamu bisa commit `model/mushroom_model.pkl`
+>  Kalau mau cold start lebih instan, kamu bisa commit `model/mushroom_model.pkl`
 > hasil training lokal ke repo (pastikan versi scikit-learn di `requirements.txt`
 > persis sama dengan yang dipakai saat training) — app akan otomatis memakainya
 > tanpa training ulang selama smoke-test-nya lolos.
 
-## 📂 Struktur Proyek
+##  Struktur Proyek
 
 ```
 mycolab/
@@ -183,7 +183,7 @@ mycolab/
     └── js/script.js        # bangun rosette SVG + panggil /predict via fetch
 ```
 
-## 🔌 API
+##  API
 
 ### `POST /predict`
 
@@ -221,27 +221,14 @@ mycolab/
 { "error": "Data belum lengkap: gill_color, ring_type, spore_print_color" }
 ```
 
-## ⚠️ Disclaimer
+##  Disclaimer
 
 Proyek ini dibuat untuk tujuan pembelajaran *machine learning* & pengembangan
 web, **bukan** alat identifikasi jamur yang aman dipakai di lapangan. Jangan
 jadikan prediksi model ini sebagai satu-satunya acuan sebelum mengonsumsi
 jamur liar — selalu konsultasikan ke ahli mikologi.
 
-## 🗺 Roadmap
 
-- [ ] Tambah opsi input semua 22 fitur (bukan cuma 4 fitur teratas)
-- [ ] Simpan riwayat prediksi
-- [ ] Deploy demo publik (Render / Railway)
-- [ ] Bandingkan performa dengan algoritma lain (Random Forest, XGBoost)
-
-## 📄 Lisensi
-
-Didistribusikan di bawah lisensi MIT. Lihat `LICENSE` untuk detail.
-
-## 👤 Author
-
-**Rizki Putra Saimona Armen**
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rizki-putra-saimona-armen)
 
