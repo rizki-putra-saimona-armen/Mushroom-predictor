@@ -108,7 +108,7 @@ Dievaluasi dengan `train_test_split` 80/20 (`random_state=42`) + `GridSearchCV`
 > Dataset — kelas-kelasnya terpisah sangat rapi secara statistik, sehingga
 > akurasi setinggi ini wajar untuk data ini.
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 | Layer | Teknologi |
 |---|---|
@@ -129,7 +129,7 @@ python app.py
 
 Buka `http://127.0.0.1:5000` di browser.
 
-> ⚙️ Run pertama makan waktu ~5-10 detik karena model dilatih otomatis dari
+>  Run pertama makan waktu ~5-10 detik karena model dilatih otomatis dari
 > `data/mushrooms.csv` memakai scikit-learn yang terpasang di komputermu, lalu
 > disimpan ke `model/`. Run berikutnya instan. Model **sengaja tidak** ikut
 > di-commit ke repo supaya tidak ada isu kompatibilitas pickle lintas environment.
